@@ -6,12 +6,19 @@ type managerStorage interface {
 	SetNewClient() error // TODO: Прописать структуру клиента
 }
 
-type ManagerService struct {
-	db managerStorage
+type waiterService interface {
+	ValidOrder() error             // TODO: Прописать структуру для заказа
+	TransferOrderToKitchen() error // TODO: Прописать структуру
 }
 
-func NewManagerService(storage managerStorage) *ManagerService {
+type ManagerService struct {
+	Storage managerStorage
+	Waiter  waiterService
+}
+
+func NewManagerService(storage managerStorage, waiter waiterService) *ManagerService {
 	return &ManagerService{
-		db: storage,
+		Storage: storage,
+		Waiter:  waiter,
 	}
 }
