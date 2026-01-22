@@ -1,8 +1,9 @@
 package mydb
 
 type DataBase struct {
-	hallMaxCapacity int
-	clients         int // TODO: Прописать структуру для хранения клиентов
+	Hall        hall
+	Ingridients []*ingridient
+	Dishes      []*dish
 }
 
 func GetDataBase() *DataBase {

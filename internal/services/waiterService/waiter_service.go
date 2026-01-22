@@ -6,7 +6,7 @@ type waiterStorage interface {
 }
 
 type kitchenService interface {
-	// TODO: Прописать методы
+	GetDishByOrder() error // TODO: Прописать структуры
 }
 
 type WaiterService struct {
