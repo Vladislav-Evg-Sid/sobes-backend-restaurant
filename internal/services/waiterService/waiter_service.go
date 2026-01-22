@@ -1,12 +1,14 @@
 package waiterservice
 
+import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
+
 type waiterStorage interface {
-	GetClientInfo() error   // TODO: Прописать структуры
-	GetDishAgeLimit() error // TODO: Прописать структуры
+	GetClientInfo(clientId int) (models.Client, error)
+	GetDishAgeLimit(dishName string) (int, error)
 }
 
 type kitchenService interface {
-	GetDishByOrder() error // TODO: Прописать структуры
+	GetDishByName(dishName string) (models.Dish, error)
 }
 
 type WaiterService struct {

@@ -1,14 +1,16 @@
 package managerservice
 
+import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
+
 type managerStorage interface {
 	GetMaxCapacity() (int, error)
 	GetCurrentClientCount() (int, error)
-	SetNewClient() error // TODO: Прописать структуру клиента
+	SetNewClient(models.Client) error
 }
 
 type waiterService interface {
-	ValidOrder() error             // TODO: Прописать структуру для заказа
-	TransferOrderToKitchen() error // TODO: Прописать структуру
+	ValidateOrder(models.Order) error
+	TransferOrderToKitchen(models.Order) error
 }
 
 type ManagerService struct {

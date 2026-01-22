@@ -1,9 +1,11 @@
 package mydb
 
 type DataBase struct {
-	Hall        hall
-	Ingridients []*ingridient
-	Dishes      []*dish
+	Hall            hall
+	Ingridients     []*ingridient
+	Dishes          []*dish
+	DishIngridients []*dishIngridients
+	Clients         []*client
 }
 
 func GetDataBase() *DataBase {

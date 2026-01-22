@@ -1,10 +1,12 @@
 package mydb
 
-import agecategories "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/enums/ageCategories"
+import (
+	agecategories "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/enums/ageCategories"
+)
 
 type hall struct {
 	maxCapacity int
-	clients     int // TODO: Прописать структуру для хранения клиентов
+	clients     []*client
 }
 
 type ingridient struct {
@@ -13,9 +15,20 @@ type ingridient struct {
 	count int
 }
 
+type dishIngridients struct {
+	dishID       int
+	ingridientId int
+	count        int
+}
+
 type dish struct {
 	id          int
 	name        string
-	ingridients []*ingridient
 	ageCategory agecategories.AgeCat
+}
+
+type client struct {
+	id   string
+	name string
+	age  int
 }

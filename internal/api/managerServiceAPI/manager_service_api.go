@@ -1,8 +1,10 @@
 package managerserviceapi
 
+import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
+
 type managerService interface {
-	SetClient() error        // TODO: Прописать структуры для взаимодействия
-	ProcessingClient() error // TODO: Сделать структуру для принятия клиента
+	SetClient(models.Client) error
+	ProcessingClient(models.Order) error
 }
 
 type ManagerServiceAPI struct {
