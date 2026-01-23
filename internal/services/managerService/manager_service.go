@@ -5,7 +5,8 @@ import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 type managerStorage interface {
 	GetMaxCapacity() int
 	GetCurrentClientCount() int
-	SetNewClient(models.Client) error
+	SetNewClient(newClient models.Client) error
+	DeleteClient(clientId string) error
 }
 
 type waiterService interface {

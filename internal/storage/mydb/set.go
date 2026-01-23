@@ -1,6 +1,10 @@
 package mydb
 
-import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
+import (
+	"fmt"
+
+	"github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
+)
 
 func (db *DataBase) SetNewClient(newClient models.Client) error {
 	db.Clients = append(
@@ -24,4 +28,14 @@ func (db *DataBase) WriteOffProducts(ingridientsToDel []models.Ingridient) error
 		}
 	}
 	return nil
+}
+
+func (db *DataBase) DeleteClient(clientId string) error {
+	for i, client := range db.Clients {
+		if client.id == clientId {
+			db.Clients = append(db.Clients[:i], db.Clients[i+1:]...)
+			return nil
+		}
+	}
+	return fmt.Errorf("No client id")
 }
