@@ -45,5 +45,3 @@ func GetDataBase(maxCapacity int) *DataBase {
 	}
 	return instance
 }
-
-// TODO: Переделать класс под синглтон
