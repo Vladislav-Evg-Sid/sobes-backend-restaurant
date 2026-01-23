@@ -7,8 +7,8 @@ import (
 )
 
 func (db *DataBase) SetNewClient(newClient models.Client) error {
-	db.Clients = append(
-		db.Clients,
+	db.Hall.clients = append(
+		db.Hall.clients,
 		&client{
 			id:   newClient.Id,
 			name: newClient.Name,
@@ -31,9 +31,9 @@ func (db *DataBase) WriteOffProducts(ingridientsToDel []models.Ingridient) error
 }
 
 func (db *DataBase) DeleteClient(clientId string) error {
-	for i, client := range db.Clients {
+	for i, client := range db.Hall.clients {
 		if client.id == clientId {
-			db.Clients = append(db.Clients[:i], db.Clients[i+1:]...)
+			db.Hall.clients = append(db.Hall.clients[:i], db.Hall.clients[i+1:]...)
 			return nil
 		}
 	}

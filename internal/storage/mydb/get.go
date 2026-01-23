@@ -9,7 +9,7 @@ import (
 )
 
 func (db *DataBase) GetClientInfo(clientId string) (models.Client, error) {
-	for _, client := range db.Clients {
+	for _, client := range db.Hall.clients {
 		if client.id == clientId {
 			return models.Client{
 				Id:   client.id,
