@@ -1,10 +1,13 @@
 package waiterservice
 
-import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
+import (
+	agecategories "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/enums/ageCategories"
+	"github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
+)
 
 type waiterStorage interface {
-	GetClientInfo(clientId int) (models.Client, error)
-	GetDishAgeLimit(dishName string) (int, error)
+	GetClientInfo(clientId string) (models.Client, error)
+	GetDishAgeLimit(dishName string) (agecategories.AgeCat, error)
 }
 
 type kitchenService interface {

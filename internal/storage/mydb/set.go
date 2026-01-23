@@ -1,0 +1,27 @@
+package mydb
+
+import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
+
+func (db *DataBase) SetNewClient(newClient models.Client) error {
+	db.Clients = append(
+		db.Clients,
+		&client{
+			id:   newClient.Id,
+			name: newClient.Name,
+			age:  newClient.Age,
+		},
+	)
+	return nil
+}
+
+func (db *DataBase) WriteOffProducts(ingridientsToDel []models.Ingridient) error {
+	for _, delIngridient := range ingridientsToDel {
+		for i, ingridient := range db.Ingridients {
+			if ingridient.id == delIngridient.Id {
+				db.Ingridients = append(db.Ingridients[:i], db.Ingridients[i+1:]...)
+				break
+			}
+		}
+	}
+	return nil
+}

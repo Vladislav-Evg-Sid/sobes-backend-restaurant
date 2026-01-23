@@ -3,8 +3,8 @@ package managerservice
 import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 
 type managerStorage interface {
-	GetMaxCapacity() (int, error)
-	GetCurrentClientCount() (int, error)
+	GetMaxCapacity() int
+	GetCurrentClientCount() int
 	SetNewClient(models.Client) error
 }
 
