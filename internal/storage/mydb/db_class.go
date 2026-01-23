@@ -32,13 +32,18 @@ func getDishIngridientsStruct() []*dishIngridients {
 	return di
 }
 
+var instance *DataBase = nil
+
 func GetDataBase(maxCapacity int) *DataBase {
-	return &DataBase{
-		Hall:            getHallStruct(maxCapacity),
-		Ingridients:     getIngridientsStruct(),
-		Dishes:          getDishesStruct(),
-		DishIngridients: getDishIngridientsStruct(),
+	if instance == nil {
+		instance = &DataBase{
+			Hall:            getHallStruct(maxCapacity),
+			Ingridients:     getIngridientsStruct(),
+			Dishes:          getDishesStruct(),
+			DishIngridients: getDishIngridientsStruct(),
+		}
 	}
+	return instance
 }
 
 // TODO: Переделать класс под синглтон
