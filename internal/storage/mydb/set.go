@@ -18,11 +18,11 @@ func (db *DataBase) SetNewClient(newClient models.Client) error {
 	return nil
 }
 
-func (db *DataBase) WriteOffProducts(ingridientsToDel []models.Ingridient) error {
-	for _, delIngridient := range ingridientsToDel {
-		for i, ingridient := range db.Ingridients {
+func (db *DataBase) WriteOffProducts(ingridientsToWriteOff []models.Ingridient) error {
+	for _, delIngridient := range ingridientsToWriteOff {
+		for _, ingridient := range db.Ingridients {
 			if ingridient.id == delIngridient.Id {
-				db.Ingridients = append(db.Ingridients[:i], db.Ingridients[i+1:]...)
+				ingridient.count -= delIngridient.Count
 				break
 			}
 		}
