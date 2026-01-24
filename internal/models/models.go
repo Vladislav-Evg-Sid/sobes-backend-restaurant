@@ -15,15 +15,11 @@ type Order struct {
 	Count  int
 }
 
-type Ingridient struct {
-	Id    int
-	Name  string
-	Count int
+type Ingridients map[string]int
+
+type DishData struct {
+	AgeCategory agecategories.AgeCat
+	Ingridients Ingridients
 }
 
-type Dish struct {
-	Id          int
-	Name        string
-	Ingridients []Ingridient
-	AgeCategory agecategories.AgeCat
-}
+type Dishes map[string]DishData

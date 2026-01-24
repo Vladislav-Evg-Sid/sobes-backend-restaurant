@@ -7,23 +7,18 @@ import (
 )
 
 func (db *DataBase) SetNewClient(newClient models.Client) error {
-	db.Hall.clients = append(
-		db.Hall.clients,
-		&client{
-			id:   newClient.Id,
-			name: newClient.Name,
-			age:  newClient.Age,
-		},
-	)
+	db.Clients[newClient.Id] = clientData{
+		name: newClient.Name,
+		age:  newClient.Age,
+	}
 	return nil
 }
 
-func (db *DataBase) WriteOffProducts(ingridientsToWriteOff []models.Ingridient) error {
-	for _, delIngridient := range ingridientsToWriteOff {
-		for _, ingridient := range db.Ingridients {
-			if ingridient.id == delIngridient.Id {
-				ingridient.count -= delIngridient.Count
-				break
+func (db *DataBase) WriteOffProducts(ingridientsToWriteOff models.Ingridients) error {
+	for keyDel, valueDel := range ingridientsToWriteOff {
+		for keyCurrent := range db.Ingridients {
+			if keyCurrent == keyDel {
+				db.Ingridients[keyCurrent] -= valueDel
 			}
 		}
 	}
@@ -31,11 +26,10 @@ func (db *DataBase) WriteOffProducts(ingridientsToWriteOff []models.Ingridient) 
 }
 
 func (db *DataBase) DeleteClient(clientId string) error {
-	for i, client := range db.Hall.clients {
-		if client.id == clientId {
-			db.Hall.clients = append(db.Hall.clients[:i], db.Hall.clients[i+1:]...)
-			return nil
-		}
+	if _, exist := db.Clients[clientId]; exist {
+		delete(db.Clients, clientId)
+		return nil
+	} else {
+		return fmt.Errorf("No client id")
 	}
-	return fmt.Errorf("No client id")
 }

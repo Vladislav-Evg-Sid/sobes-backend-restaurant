@@ -5,79 +5,53 @@ import (
 
 	agecategories "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/enums/ageCategories"
 	"github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
-	"github.com/samber/lo"
 )
 
 func (db *DataBase) GetClientInfo(clientId string) (models.Client, error) {
-	for _, client := range db.Hall.clients {
-		if client.id == clientId {
-			return models.Client{
-				Id:   client.id,
-				Name: client.name,
-				Age:  client.age,
-			}, nil
-		}
+	currentClient, exists := db.Clients[clientId]
+	if !exists {
+		return models.Client{}, fmt.Errorf("No data")
 	}
-	return models.Client{}, fmt.Errorf("No data")
+	return models.Client{
+		Id:   clientId,
+		Name: currentClient.name,
+		Age:  currentClient.age,
+	}, nil
 }
 
 func (db *DataBase) GetDishAgeLimit(dishName string) (agecategories.AgeCat, error) {
-	for _, dish := range db.Dishes {
-		if dish.name == dishName {
-			return dish.ageCategory, nil
-		}
+	currentDish, exist := db.Dishes[dishName]
+	if !exist {
+		return "", fmt.Errorf("No data")
 	}
-	return "", fmt.Errorf("No data")
+	return currentDish.ageCategory, nil
 }
 
 func (db *DataBase) GetMaxCapacity() int {
-	return db.Hall.maxCapacity
+	return db.MaxHallCapacity
 }
 
 func (db *DataBase) GetCurrentClientCount() int {
-	return len(db.Hall.clients)
+	return len(db.Clients)
 }
 
-func (db *DataBase) GetDishList() ([]*models.Dish, error) {
-	if len(db.Dishes) == 0 {
-		return nil, fmt.Errorf("No Data")
+func (db *DataBase) GetDishByName(dishName string) (models.Dishes, error) {
+	currentDish, exist := db.Dishes[dishName]
+	if !exist {
+		return models.Dishes{}, fmt.Errorf("No data")
 	}
-	return db.mapDishList(), nil
+	return models.Dishes{
+		dishName: models.DishData{
+			AgeCategory: currentDish.ageCategory,
+			Ingridients: mapDishIngridients(currentDish.ingridients),
+		},
+	}, nil
 }
 
-func (db *DataBase) mapDishList() []*models.Dish {
-	return lo.Map(db.Dishes, func(d *dish, _ int) *models.Dish {
-		return &models.Dish{
-			Id:          d.id,
-			Name:        d.name,
-			AgeCategory: d.ageCategory,
-			Ingridients: db.mapIngridientList(d.id),
-		}
-	})
-}
-
-func (db *DataBase) mapIngridientList(dishId int) []models.Ingridient {
-	ingridientsForCurrentDish := make([]models.Ingridient, 0, 5)
-	for _, dish := range db.DishIngridients {
-		if dish.dishID == dishId {
-			ingridientsForCurrentDish = append(
-				ingridientsForCurrentDish,
-				models.Ingridient{
-					Id:    dish.ingridientId,
-					Name:  db.GetIngridientNameByID(dish.ingridientId),
-					Count: dish.count,
-				},
-			)
-		}
+func mapDishIngridients(ingridients ingridient) models.Ingridients {
+	ingr := make(models.Ingridients)
+	for key, value := range ingridients {
+		ingr[key] = value
 	}
-	return ingridientsForCurrentDish
-}
-
-func (db *DataBase) GetIngridientNameByID(ingridientId int) string {
-	for _, ingridient := range db.Ingridients {
-		if ingridient.id == ingridientId {
-			return ingridient.name
-		}
-	}
-	return ""
+	return ingr
 }

@@ -2,545 +2,180 @@ package mydb
 
 import agecategories "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/enums/ageCategories"
 
-func baseInsertDataInTableIngridient(table []*ingridient) []*ingridient {
-	return append(
-		table,
-		&ingridient{
-			id:    1,
-			name:  "Яйцо куриное",
-			count: 0,
-		},
-		&ingridient{
-			id:    2,
-			name:  "Молоко",
-			count: 0,
-		},
-		&ingridient{
-			id:    3,
-			name:  "Сыр твердый",
-			count: 0,
-		},
-		&ingridient{
-			id:    4,
-			name:  "Соль",
-			count: 0,
-		},
-		&ingridient{
-			id:    5,
-			name:  "Масло сливочное",
-			count: 0,
-		},
-		&ingridient{
-			id:    6,
-			name:  "Помидор",
-			count: 0,
-		},
-		&ingridient{
-			id:    7,
-			name:  "Моцарелла",
-			count: 0,
-		},
-		&ingridient{
-			id:    8,
-			name:  "Базилик свежий",
-			count: 0,
-		},
-		&ingridient{
-			id:    9,
-			name:  "Масло оливковое",
-			count: 0,
-		},
-		&ingridient{
-			id:    10,
-			name:  "Хлеб для тостов",
-			count: 0,
-		},
-		&ingridient{
-			id:    11,
-			name:  "Авокадо",
-			count: 0,
-		},
-		&ingridient{
-			id:    12,
-			name:  "Лимонный сок",
-			count: 0,
-		},
-		&ingridient{
-			id:    13,
-			name:  "Перец черный молотый",
-			count: 0,
-		},
-		&ingridient{
-			id:    14,
-			name:  "Спагетти",
-			count: 0,
-		},
-		&ingridient{
-			id:    15,
-			name:  "Чеснок",
-			count: 0,
-		},
-		&ingridient{
-			id:    16,
-			name:  "Перец чили хлопьями",
-			count: 0,
-		},
-		&ingridient{
-			id:    17,
-			name:  "Петрушка свежая",
-			count: 0,
-		},
-		&ingridient{
-			id:    18,
-			name:  "Йогурт греческий",
-			count: 0,
-		},
-		&ingridient{
-			id:    19,
-			name:  "Мёд",
-			count: 0,
-		},
-		&ingridient{
-			id:    20,
-			name:  "Грецкий орех",
-			count: 0,
-		},
-		&ingridient{
-			id:    21,
-			name:  "Багет",
-			count: 0,
-		},
-		&ingridient{
-			id:    22,
-			name:  "Красное сухое вино",
-			count: 0,
-		},
-		&ingridient{
-			id:    23,
-			name:  "Сахар",
-			count: 0,
-		},
-		&ingridient{
-			id:    24,
-			name:  "Гвоздика",
-			count: 0,
-		},
-		&ingridient{
-			id:    25,
-			name:  "Корица",
-			count: 0,
-		},
-		&ingridient{
-			id:    26,
-			name:  "Апельсин",
-			count: 0,
-		},
-		&ingridient{
-			id:    27,
-			name:  "Мука пшеничная",
-			count: 0,
-		},
-		&ingridient{
-			id:    28,
-			name:  "Томатный соус",
-			count: 0,
-		},
-		&ingridient{
-			id:    29,
-			name:  "Бекон или панчетта",
-			count: 0,
-		},
-		&ingridient{
-			id:    30,
-			name:  "Сливки 20%",
-			count: 0,
-		},
-		&ingridient{
-			id:    31,
-			name:  "Сыр пармезан",
-			count: 0,
-		},
-		&ingridient{
-			id:    32,
-			name:  "Креветки очищенные",
-			count: 0,
-		},
-		&ingridient{
-			id:    33,
-			name:  "Белый ром",
-			count: 0,
-		},
-		&ingridient{
-			id:    34,
-			name:  "Содовая вода",
-			count: 0,
-		},
-		&ingridient{
-			id:    35,
-			name:  "Сахарный сироп",
-			count: 0,
-		},
-		&ingridient{
-			id:    36,
-			name:  "Лайм",
-			count: 0,
-		},
-		&ingridient{
-			id:    37,
-			name:  "Мята свежая",
-			count: 0,
-		},
-		&ingridient{
-			id:    38,
-			name:  "Лёд",
-			count: 0,
-		},
-	)
+func insertDataInIngredients(ingredients ingridient) ingridient {
+	ingredients["Яйцо куриное"] = 0
+	ingredients["Молоко"] = 0
+	ingredients["Сыр твердый"] = 0
+	ingredients["Соль"] = 0
+	ingredients["Масло сливочное"] = 0
+	ingredients["Помидор"] = 0
+	ingredients["Моцарелла"] = 0
+	ingredients["Базилик свежий"] = 0
+	ingredients["Масло оливковое"] = 0
+	ingredients["Хлеб для тостов"] = 0
+	ingredients["Авокадо"] = 0
+	ingredients["Лимонный сок"] = 0
+	ingredients["Перец черный молотый"] = 0
+	ingredients["Спагетти"] = 0
+	ingredients["Чеснок"] = 0
+	ingredients["Перец чили хлопьями"] = 0
+	ingredients["Петрушка свежая"] = 0
+	ingredients["Йогурт греческий"] = 0
+	ingredients["Мёд"] = 0
+	ingredients["Грецкий орех"] = 0
+	ingredients["Багет"] = 0
+	ingredients["Красное сухое вино"] = 0
+	ingredients["Сахар"] = 0
+	ingredients["Гвоздика"] = 0
+	ingredients["Корица"] = 0
+	ingredients["Апельсин"] = 0
+	ingredients["Мука пшеничная"] = 0
+	ingredients["Томатный соус"] = 0
+	ingredients["Бекон или панчетта"] = 0
+	ingredients["Сливки 20%"] = 0
+	ingredients["Сыр пармезан"] = 0
+	ingredients["Креветки очищенные"] = 0
+	ingredients["Белый ром"] = 0
+	ingredients["Содовая вода"] = 0
+	ingredients["Сахарный сироп"] = 0
+	ingredients["Лайм"] = 0
+	ingredients["Мята свежая"] = 0
+	ingredients["Лёд"] = 0
+
+	return ingredients
 }
 
-func baseInsertDataInTableDish(table []*dish) []*dish {
-	return append(
-		table,
-		&dish{
-			id:          1,
-			name:        "Омлет с сыром",
-			ageCategory: agecategories.Lower18,
+func insertDataInDishes(dishes dish) dish {
+	// Омлет с сыром
+	dishes["Омлет с сыром"] = dishData{
+		ageCategory: agecategories.Lower18,
+		ingridients: ingridient{
+			"Яйцо куриное":    2,
+			"Молоко":          2,
+			"Сыр твердый":     30,
+			"Соль":            5,
+			"Масло сливочное": 10,
 		},
-		&dish{
-			id:          2,
-			name:        "Салат \"Капрезе\"",
-			ageCategory: agecategories.Lower18,
-		},
-		&dish{
-			id:          3,
-			name:        "Тост с авокадо",
-			ageCategory: agecategories.Lower18,
-		},
-		&dish{
-			id:          4,
-			name:        "Паста \"Аглио э олио\"",
-			ageCategory: agecategories.Lower18,
-		},
-		&dish{
-			id:          5,
-			name:        "Греческий йогурт с мёдом и орехами",
-			ageCategory: agecategories.Lower18,
-		},
-		&dish{
-			id:          6,
-			name:        "Брускетта с томатами",
-			ageCategory: agecategories.Lower18,
-		},
-		&dish{
-			id:          7,
-			name:        "Пицца \"Маргарита\"",
-			ageCategory: agecategories.Lower18,
-		},
-		&dish{
-			id:          8,
-			name:        "Глинтвейн",
-			ageCategory: agecategories.More18,
-		},
-		&dish{
-			id:          9,
-			name:        "Паста \"Карбонара\"",
-			ageCategory: agecategories.More18,
-		},
-		&dish{
-			id:          10,
-			name:        "Креветки в чесночном соусе",
-			ageCategory: agecategories.More18,
-		},
-		&dish{
-			id:          11,
-			name:        "Коктейль \"Мохито\"",
-			ageCategory: agecategories.More18,
-		},
-	)
-}
+	}
 
-func baseInsertDataInTableDishIngridien(table []*dishIngridients) []*dishIngridients {
-	return append(
-		table,
-		&dishIngridients{
-			dishID:       1,
-			ingridientId: 1,
-			count:        2,
+	// Салат "Капрезе"
+	dishes["Салат \"Капрезе\""] = dishData{
+		ageCategory: agecategories.Lower18,
+		ingridients: ingridient{
+			"Помидор":         2,
+			"Моцарелла":       125,
+			"Базилик свежий":  10,
+			"Масло оливковое": 2,
+			"Соль":            5,
 		},
-		&dishIngridients{
-			dishID:       1,
-			ingridientId: 2,
-			count:        2,
-		},
-		&dishIngridients{
-			dishID:       1,
-			ingridientId: 3,
-			count:        30,
-		},
-		&dishIngridients{
-			dishID:       1,
-			ingridientId: 4,
-			count:        5,
-		},
-		&dishIngridients{
-			dishID:       1,
-			ingridientId: 5,
-			count:        10,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       2,
-			ingridientId: 6,
-			count:        2,
+	// Тост с авокадо
+	dishes["Тост с авокадо"] = dishData{
+		ageCategory: agecategories.Lower18,
+		ingridients: ingridient{
+			"Хлеб для тостов":      2,
+			"Авокадо":              1,
+			"Лимонный сок":         1,
+			"Соль":                 5,
+			"Перец черный молотый": 5,
 		},
-		&dishIngridients{
-			dishID:       2,
-			ingridientId: 7,
-			count:        125,
-		},
-		&dishIngridients{
-			dishID:       2,
-			ingridientId: 8,
-			count:        10,
-		},
-		&dishIngridients{
-			dishID:       2,
-			ingridientId: 9,
-			count:        2,
-		},
-		&dishIngridients{
-			dishID:       2,
-			ingridientId: 4,
-			count:        5,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       3,
-			ingridientId: 10,
-			count:        2,
+	// Паста "Аглио э олио"
+	dishes["Паста \"Аглио э олио\""] = dishData{
+		ageCategory: agecategories.Lower18,
+		ingridients: ingridient{
+			"Спагетти":            200,
+			"Чеснок":              4,
+			"Перец чили хлопьями": 1,
+			"Петрушка свежая":     3,
+			"Масло оливковое":     4,
 		},
-		&dishIngridients{
-			dishID:       3,
-			ingridientId: 11,
-			count:        1,
-		},
-		&dishIngridients{
-			dishID:       3,
-			ingridientId: 12,
-			count:        1,
-		},
-		&dishIngridients{
-			dishID:       3,
-			ingridientId: 4,
-			count:        5,
-		},
-		&dishIngridients{
-			dishID:       3,
-			ingridientId: 13,
-			count:        5,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       4,
-			ingridientId: 14,
-			count:        200,
+	// Греческий йогурт с мёдом и орехами
+	dishes["Греческий йогурт с мёдом и орехами"] = dishData{
+		ageCategory: agecategories.Lower18,
+		ingridients: ingridient{
+			"Йогурт греческий": 200,
+			"Мёд":              2,
+			"Грецкий орех":     20,
 		},
-		&dishIngridients{
-			dishID:       4,
-			ingridientId: 15,
-			count:        4,
-		},
-		&dishIngridients{
-			dishID:       4,
-			ingridientId: 16,
-			count:        1,
-		},
-		&dishIngridients{
-			dishID:       4,
-			ingridientId: 17,
-			count:        3,
-		},
-		&dishIngridients{
-			dishID:       4,
-			ingridientId: 9,
-			count:        4,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       5,
-			ingridientId: 18,
-			count:        200,
+	// Брускетта с томатами
+	dishes["Брускетта с томатами"] = dishData{
+		ageCategory: agecategories.Lower18,
+		ingridients: ingridient{
+			"Багет":           1,
+			"Помидор":         2,
+			"Чеснок":          1,
+			"Базилик свежий":  5,
+			"Масло оливковое": 1,
 		},
-		&dishIngridients{
-			dishID:       5,
-			ingridientId: 19,
-			count:        2,
-		},
-		&dishIngridients{
-			dishID:       5,
-			ingridientId: 20,
-			count:        20,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       6,
-			ingridientId: 21,
-			count:        1,
+	// Пицца "Маргарита"
+	dishes["Пицца \"Маргарита\""] = dishData{
+		ageCategory: agecategories.Lower18,
+		ingridients: ingridient{
+			"Мука пшеничная":  200,
+			"Томатный соус":   5,
+			"Моцарелла":       150,
+			"Базилик свежий":  5,
+			"Масло оливковое": 1,
 		},
-		&dishIngridients{
-			dishID:       6,
-			ingridientId: 6,
-			count:        2,
-		},
-		&dishIngridients{
-			dishID:       6,
-			ingridientId: 15,
-			count:        1,
-		},
-		&dishIngridients{
-			dishID:       6,
-			ingridientId: 8,
-			count:        5,
-		},
-		&dishIngridients{
-			dishID:       6,
-			ingridientId: 9,
-			count:        1,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       7,
-			ingridientId: 27,
-			count:        200,
+	// Глинтвейн
+	dishes["Глинтвейн"] = dishData{
+		ageCategory: agecategories.More18,
+		ingridients: ingridient{
+			"Красное сухое вино": 750,
+			"Сахар":              2,
+			"Гвоздика":           3,
+			"Корица":             1,
+			"Апельсин":           1,
 		},
-		&dishIngridients{
-			dishID:       7,
-			ingridientId: 28,
-			count:        5,
-		},
-		&dishIngridients{
-			dishID:       7,
-			ingridientId: 7,
-			count:        150,
-		},
-		&dishIngridients{
-			dishID:       7,
-			ingridientId: 8,
-			count:        5,
-		},
-		&dishIngridients{
-			dishID:       7,
-			ingridientId: 9,
-			count:        1,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       8,
-			ingridientId: 22,
-			count:        750,
+	// Паста "Карбонара"
+	dishes["Паста \"Карбонара\""] = dishData{
+		ageCategory: agecategories.More18,
+		ingridients: ingridient{
+			"Спагетти":           200,
+			"Бекон или панчетта": 100,
+			"Яйцо куриное":       2,
+			"Сыр пармезан":       50,
+			"Сливки 20%":         100,
 		},
-		&dishIngridients{
-			dishID:       8,
-			ingridientId: 23,
-			count:        2,
-		},
-		&dishIngridients{
-			dishID:       8,
-			ingridientId: 24,
-			count:        3,
-		},
-		&dishIngridients{
-			dishID:       8,
-			ingridientId: 25,
-			count:        1,
-		},
-		&dishIngridients{
-			dishID:       8,
-			ingridientId: 26,
-			count:        1,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       9,
-			ingridientId: 14,
-			count:        200,
+	// Креветки в чесночном соусе
+	dishes["Креветки в чесночном соусе"] = dishData{
+		ageCategory: agecategories.More18,
+		ingridients: ingridient{
+			"Креветки очищенные": 300,
+			"Чеснок":             3,
+			"Масло сливочное":    50,
+			"Петрушка свежая":    2,
+			"Красное сухое вино": 50,
 		},
-		&dishIngridients{
-			dishID:       9,
-			ingridientId: 29,
-			count:        100,
-		},
-		&dishIngridients{
-			dishID:       9,
-			ingridientId: 1,
-			count:        2,
-		},
-		&dishIngridients{
-			dishID:       9,
-			ingridientId: 31,
-			count:        50,
-		},
-		&dishIngridients{
-			dishID:       9,
-			ingridientId: 30,
-			count:        100,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       10,
-			ingridientId: 32,
-			count:        300,
+	// Коктейль "Мохито"
+	dishes["Коктейль \"Мохито\""] = dishData{
+		ageCategory: agecategories.More18,
+		ingridients: ingridient{
+			"Белый ром":      50,
+			"Содовая вода":   100,
+			"Сахарный сироп": 20,
+			"Лайм":           1,
+			"Мята свежая":    10,
+			"Лёд":            100,
 		},
-		&dishIngridients{
-			dishID:       10,
-			ingridientId: 15,
-			count:        3,
-		},
-		&dishIngridients{
-			dishID:       10,
-			ingridientId: 5,
-			count:        50,
-		},
-		&dishIngridients{
-			dishID:       10,
-			ingridientId: 17,
-			count:        2,
-		},
-		&dishIngridients{
-			dishID:       10,
-			ingridientId: 22,
-			count:        50,
-		},
+	}
 
-		&dishIngridients{
-			dishID:       11,
-			ingridientId: 33,
-			count:        50,
-		},
-		&dishIngridients{
-			dishID:       11,
-			ingridientId: 34,
-			count:        100,
-		},
-		&dishIngridients{
-			dishID:       11,
-			ingridientId: 35,
-			count:        20,
-		},
-		&dishIngridients{
-			dishID:       11,
-			ingridientId: 36,
-			count:        1,
-		},
-		&dishIngridients{
-			dishID:       11,
-			ingridientId: 37,
-			count:        10,
-		},
-		&dishIngridients{
-			dishID:       11,
-			ingridientId: 38,
-			count:        100,
-		},
-	)
+	return dishes
 }

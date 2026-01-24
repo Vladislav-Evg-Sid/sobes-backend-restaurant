@@ -3,8 +3,8 @@ package kitchenservice
 import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 
 type kitchenStorage interface {
-	GetDishList() ([]*models.Dish, error)
-	WriteOffProducts([]models.Ingridient) error
+	GetDishByName(dishName string) (models.Dishes, error)
+	WriteOffProducts(models.Ingridients) error
 	SetNewProducts() error // TODO: Прописать реализацию. Это автоматическое пополнение склада на константы
 }
 
