@@ -43,14 +43,22 @@ func (db *DataBase) GetDishByName(dishName string) (models.Dishes, error) {
 	return models.Dishes{
 		dishName: models.DishData{
 			AgeCategory: currentDish.ageCategory,
-			Ingridients: mapDishIngridients(currentDish.ingridients),
+			Ingredients: mapDishIngredients(currentDish.ingredients),
 		},
 	}, nil
 }
 
-func mapDishIngridients(ingridients ingridient) models.Ingridients {
-	ingr := make(models.Ingridients)
-	for key, value := range ingridients {
+func mapDishIngredients(ingredients ingridient) models.Ingredients {
+	ingr := make(models.Ingredients)
+	for key, value := range ingredients {
+		ingr[key] = value
+	}
+	return ingr
+}
+
+func (db *DataBase) GetIngredients() models.Ingredients {
+	ingr := make(models.Ingredients)
+	for key, value := range db.Ingredients {
 		ingr[key] = value
 	}
 	return ingr

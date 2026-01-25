@@ -4,8 +4,9 @@ import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 
 type kitchenStorage interface {
 	GetDishByName(dishName string) (models.Dishes, error)
-	WriteOffProducts(models.Ingridients) error
-	SetNewProducts() error // TODO: Прописать реализацию. Это автоматическое пополнение склада на константы
+	WriteOffProducts(models.Ingredients) error
+	SetNewProducts() error
+	GetIngredients() models.Ingredients
 }
 
 type KitchenService struct {

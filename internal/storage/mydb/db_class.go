@@ -2,12 +2,12 @@ package mydb
 
 type DataBase struct {
 	MaxHallCapacity int
-	Ingridients     ingridient
+	Ingredients     ingridient
 	Dishes          dish
 	Clients         client
 }
 
-func getIngridientsStruct() ingridient {
+func getIngredientsStruct() ingridient {
 	ingr := make(ingridient)
 	ingr = insertDataInIngredients(ingr)
 	return ingr
@@ -29,7 +29,7 @@ func GetDataBase(maxCapacity int) *DataBase {
 	if instance == nil {
 		instance = &DataBase{
 			MaxHallCapacity: maxCapacity,
-			Ingridients:     getIngridientsStruct(),
+			Ingredients:     getIngredientsStruct(),
 			Dishes:          getDishesStruct(),
 			Clients:         getClientsStruct(),
 		}

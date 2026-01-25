@@ -49,7 +49,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Омлет с сыром
 	dishes["Омлет с сыром"] = dishData{
 		ageCategory: agecategories.Lower18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Яйцо куриное":    2,
 			"Молоко":          2,
 			"Сыр твердый":     30,
@@ -61,7 +61,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Салат "Капрезе"
 	dishes["Салат \"Капрезе\""] = dishData{
 		ageCategory: agecategories.Lower18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Помидор":         2,
 			"Моцарелла":       125,
 			"Базилик свежий":  10,
@@ -73,7 +73,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Тост с авокадо
 	dishes["Тост с авокадо"] = dishData{
 		ageCategory: agecategories.Lower18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Хлеб для тостов":      2,
 			"Авокадо":              1,
 			"Лимонный сок":         1,
@@ -85,7 +85,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Паста "Аглио э олио"
 	dishes["Паста \"Аглио э олио\""] = dishData{
 		ageCategory: agecategories.Lower18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Спагетти":            200,
 			"Чеснок":              4,
 			"Перец чили хлопьями": 1,
@@ -97,7 +97,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Греческий йогурт с мёдом и орехами
 	dishes["Греческий йогурт с мёдом и орехами"] = dishData{
 		ageCategory: agecategories.Lower18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Йогурт греческий": 200,
 			"Мёд":              2,
 			"Грецкий орех":     20,
@@ -107,7 +107,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Брускетта с томатами
 	dishes["Брускетта с томатами"] = dishData{
 		ageCategory: agecategories.Lower18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Багет":           1,
 			"Помидор":         2,
 			"Чеснок":          1,
@@ -119,7 +119,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Пицца "Маргарита"
 	dishes["Пицца \"Маргарита\""] = dishData{
 		ageCategory: agecategories.Lower18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Мука пшеничная":  200,
 			"Томатный соус":   5,
 			"Моцарелла":       150,
@@ -131,7 +131,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Глинтвейн
 	dishes["Глинтвейн"] = dishData{
 		ageCategory: agecategories.More18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Красное сухое вино": 750,
 			"Сахар":              2,
 			"Гвоздика":           3,
@@ -143,7 +143,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Паста "Карбонара"
 	dishes["Паста \"Карбонара\""] = dishData{
 		ageCategory: agecategories.More18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Спагетти":           200,
 			"Бекон или панчетта": 100,
 			"Яйцо куриное":       2,
@@ -155,7 +155,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Креветки в чесночном соусе
 	dishes["Креветки в чесночном соусе"] = dishData{
 		ageCategory: agecategories.More18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Креветки очищенные": 300,
 			"Чеснок":             3,
 			"Масло сливочное":    50,
@@ -167,7 +167,7 @@ func insertDataInDishes(dishes dish) dish {
 	// Коктейль "Мохито"
 	dishes["Коктейль \"Мохито\""] = dishData{
 		ageCategory: agecategories.More18,
-		ingridients: ingridient{
+		ingredients: ingridient{
 			"Белый ром":      50,
 			"Содовая вода":   100,
 			"Сахарный сироп": 20,
@@ -178,4 +178,47 @@ func insertDataInDishes(dishes dish) dish {
 	}
 
 	return dishes
+}
+
+func getAddedIngredients() ingridient {
+	return ingridient{
+		"Сыр твердый":          90,
+		"Соль":                 45,
+		"Базилик свежий":       60,
+		"Перец черный молотый": 15,
+		"Чеснок":               24,
+		"Мята свежая":          30,
+		"Корица":               3,
+		"Молоко":               6,
+		"Спагетти":             1200,
+		"Багет":                3,
+		"Гвоздика":             9,
+		"Белый ром":            150,
+		"Масло сливочное":      180,
+		"Авокадо":              3,
+		"Йогурт греческий":     600,
+		"Грецкий орех":         60,
+		"Сливки 20%":           300,
+		"Хлеб для тостов":      6,
+		"Лимонный сок":         3,
+		"Бекон или панчетта":   300,
+		"Сыр пармезан":         150,
+		"Креветки очищенные":   900,
+		"Лёд":                  300,
+		"Красное сухое вино":   2400,
+		"Сахарный сироп":       60,
+		"Апельсин":             3,
+		"Моцарелла":            825,
+		"Перец чили хлопьями":  3,
+		"Петрушка свежая":      15,
+		"Мёд":                  6,
+		"Содовая вода":         300,
+		"Яйцо куриное":         12,
+		"Помидор":              12,
+		"Масло оливковое":      24,
+		"Сахар":                6,
+		"Мука пшеничная":       600,
+		"Томатный соус":        15,
+		"Лайм":                 3,
+	}
 }

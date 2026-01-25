@@ -14,11 +14,11 @@ func (db *DataBase) SetNewClient(newClient models.Client) error {
 	return nil
 }
 
-func (db *DataBase) WriteOffProducts(ingridientsToWriteOff models.Ingridients) error {
-	for keyDel, valueDel := range ingridientsToWriteOff {
-		for keyCurrent := range db.Ingridients {
+func (db *DataBase) WriteOffProducts(ingredientsToWriteOff models.Ingredients) error {
+	for keyDel, valueDel := range ingredientsToWriteOff {
+		for keyCurrent := range db.Ingredients {
 			if keyCurrent == keyDel {
-				db.Ingridients[keyCurrent] -= valueDel
+				db.Ingredients[keyCurrent] -= valueDel
 			}
 		}
 	}
@@ -32,4 +32,12 @@ func (db *DataBase) DeleteClient(clientId string) error {
 	} else {
 		return fmt.Errorf("No client id")
 	}
+}
+
+func (db *DataBase) SetNewProducts() error {
+	valueSetter := getAddedIngredients()
+	for key, value := range valueSetter {
+		db.Ingredients[key] += value
+	}
+	return nil
 }

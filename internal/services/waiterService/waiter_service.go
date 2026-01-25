@@ -12,6 +12,7 @@ type waiterStorage interface {
 
 type kitchenService interface {
 	GetDishByName(dishName string) (models.Dishes, error)
+	ProcessingDish(dish models.DishData) error
 }
 
 type WaiterService struct {

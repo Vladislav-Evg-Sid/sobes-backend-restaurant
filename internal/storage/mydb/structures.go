@@ -8,7 +8,7 @@ type ingridient map[string]int
 
 type dishData struct {
 	ageCategory agecategories.AgeCat
-	ingridients ingridient
+	ingredients ingridient
 }
 
 type dish map[string]dishData

@@ -15,11 +15,11 @@ type Order struct {
 	Count  int
 }
 
-type Ingridients map[string]int
+type Ingredients map[string]int
 
 type DishData struct {
 	AgeCategory agecategories.AgeCat
-	Ingridients Ingridients
+	Ingredients Ingredients
 }
 
 type Dishes map[string]DishData
