@@ -10,8 +10,8 @@ type managerStorage interface {
 }
 
 type waiterService interface {
-	ValidateOrder(models.Order) error
-	TransferOrderToKitchen(models.Order) error
+	ValidateOrder(currentOrder models.Order) error
+	TransferOrderToKitchen(currentOrder models.Order) error
 }
 
 type ManagerService struct {

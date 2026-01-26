@@ -3,7 +3,7 @@ package kitchenservice
 import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 
 type kitchenStorage interface {
-	GetDishByName(dishName string) (models.Dishes, error)
+	GetDishByName(dishName string) (models.DishData, error)
 	WriteOffProducts(models.Ingredients) error
 	SetNewProducts() error
 	GetIngredients() models.Ingredients

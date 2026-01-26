@@ -35,16 +35,14 @@ func (db *DataBase) GetCurrentClientCount() int {
 	return len(db.Clients)
 }
 
-func (db *DataBase) GetDishByName(dishName string) (models.Dishes, error) {
+func (db *DataBase) GetDishByName(dishName string) (models.DishData, error) {
 	currentDish, exist := db.Dishes[dishName]
 	if !exist {
-		return models.Dishes{}, fmt.Errorf("No data")
+		return models.DishData{}, fmt.Errorf("No data")
 	}
-	return models.Dishes{
-		dishName: models.DishData{
-			AgeCategory: currentDish.ageCategory,
-			Ingredients: mapDishIngredients(currentDish.ingredients),
-		},
+	return models.DishData{
+		AgeCategory: currentDish.ageCategory,
+		Ingredients: mapDishIngredients(currentDish.ingredients),
 	}, nil
 }
 
