@@ -18,14 +18,13 @@ type kitchenService interface {
 type WaiterService struct {
 	Storage   waiterStorage
 	Kitchen   kitchenService
-	clientAge int
-	// TODO: Прописать данные, которые требуется временно хранить
+	ClientAge int
 }
 
 func NewWaiterService(storage waiterStorage, kitchen kitchenService) *WaiterService {
 	return &WaiterService{
 		Storage:   storage,
 		Kitchen:   kitchen,
-		clientAge: -1,
+		ClientAge: -1,
 	}
 }

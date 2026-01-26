@@ -8,7 +8,11 @@ import (
 )
 
 func (w *WaiterService) ValidateOrder(currentOrder models.Order) error {
-	if w.clientAge < 18 {
+	if w.ClientAge == -1 {
+		return fmt.Errorf("No client")
+	}
+
+	if w.ClientAge < 18 {
 		dish, err := w.Kitchen.GetDishByName(currentOrder.Dish)
 		if err != nil {
 			return err
