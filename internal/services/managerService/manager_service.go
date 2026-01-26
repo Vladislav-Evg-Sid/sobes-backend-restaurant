@@ -12,6 +12,8 @@ type managerStorage interface {
 type waiterService interface {
 	ValidateOrder(currentOrder models.Order) error
 	TransferOrderToKitchen(currentOrder models.Order) error
+	SetClientAge(clientAge int) error
+	DeleteClientAge() error
 }
 
 type ManagerService struct {
