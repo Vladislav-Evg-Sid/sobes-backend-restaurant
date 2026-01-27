@@ -1,0 +1,8 @@
+hall:
+  max_capacity: 5
+
+kitchen:
+  dish_count_to_set_product: 3
+
+app:
+  path_to_json: input.json

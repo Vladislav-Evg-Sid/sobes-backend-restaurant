@@ -15,10 +15,10 @@ type KitchenService struct {
 	CurrentDishCount       int
 }
 
-func NewKitchenService(storage kitchenStorage, maxDish int) *KitchenService {
+func NewKitchenService(storage kitchenStorage, dishCountToSetProduct int) *KitchenService {
 	return &KitchenService{
 		Storage:                storage,
-		DishCountToSetProducts: maxDish,
+		DishCountToSetProducts: dishCountToSetProduct,
 		CurrentDishCount:       0,
 	}
 }
