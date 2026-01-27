@@ -12,3 +12,8 @@ type OrderParced struct {
 	Dich   string `json:"dish"`
 	Count  int    `json:"quantity"`
 }
+
+type DataParced struct {
+	Clients []ClientParced `json:"clients"`
+	Orders  []OrderParced  `json:"orders"`
+}

@@ -10,7 +10,7 @@ type Client struct {
 
 type Order struct {
 	Id     string
-	Client Client
+	Client *Client
 	Dish   string
 	Count  int
 }

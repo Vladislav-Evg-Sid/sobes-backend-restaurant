@@ -17,5 +17,5 @@ func main() {
 	managerService := bootstrap.GetManagerService(mydbStorage, waiterWervice)
 	managerAPI := bootstrap.GetManagerAPI(managerService)
 
-	bootstrap.AppRun(managerAPI)
+	bootstrap.AppRun(managerAPI, cfg.App.PathToJSON)
 }
