@@ -7,6 +7,7 @@ import (
 )
 
 func (k *KitchenService) ProcessingDish(dish models.DishData) error { // TODO: Добавить автопоплнение ингридиентов
+	k.autoAddingIngredients()
 	availableIngredients := k.Storage.GetIngredients()
 	for ingName, ingCount := range dish.Ingredients {
 		if availableIngredients[ingName] < ingCount {
