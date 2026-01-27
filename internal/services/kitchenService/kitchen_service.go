@@ -4,7 +4,7 @@ import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 
 type kitchenStorage interface {
 	GetDishByName(dishName string) (models.DishData, error)
-	WriteOffProducts(models.Ingredients) error
+	WriteOffProducts(ingredientsToWriteOff models.Ingredients, dishCount int) error
 	SetNewProducts() error
 	GetIngredients() models.Ingredients
 }

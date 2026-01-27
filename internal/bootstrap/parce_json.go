@@ -58,7 +58,7 @@ func parceOrders(data_orders []models.OrderParced, clients []models.Client) []mo
 			models.Order{
 				Id:     ord.Id,
 				Dish:   ord.Dich,
-				Count:  ord.Count, // TODO: Переделать обработку блюда под несколько блюд
+				Count:  ord.Count,
 				Client: mapClientFromID(clients, ord.Client),
 			},
 		)

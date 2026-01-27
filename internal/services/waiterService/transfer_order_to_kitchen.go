@@ -15,7 +15,7 @@ func (w *WaiterService) TransferOrderToKitchen(currentOrder models.Order) error 
 	if err != nil {
 		return err
 	}
-	err = w.Kitchen.ProcessingDish(dish)
+	err = w.Kitchen.ProcessingDish(dish, currentOrder.Count)
 	if err != nil {
 		return err
 	}

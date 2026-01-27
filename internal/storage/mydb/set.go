@@ -14,11 +14,11 @@ func (db *DataBase) SetNewClient(newClient models.Client) error {
 	return nil
 }
 
-func (db *DataBase) WriteOffProducts(ingredientsToWriteOff models.Ingredients) error {
+func (db *DataBase) WriteOffProducts(ingredientsToWriteOff models.Ingredients, dishCount int) error {
 	for keyDel, valueDel := range ingredientsToWriteOff {
 		for keyCurrent := range db.Ingredients {
 			if keyCurrent == keyDel {
-				db.Ingredients[keyCurrent] -= valueDel
+				db.Ingredients[keyCurrent] -= valueDel * dishCount
 			}
 		}
 	}
