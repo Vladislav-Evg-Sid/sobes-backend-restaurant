@@ -33,6 +33,7 @@ func GetDataBase(maxCapacity int) *DataBase {
 			Dishes:          getDishesStruct(),
 			Clients:         getClientsStruct(),
 		}
+		instance.SetNewProducts()
 	}
 	return instance
 }

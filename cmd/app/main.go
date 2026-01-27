@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/config"
 	"github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/bootstrap"
 )
@@ -8,7 +10,7 @@ import (
 func main() {
 	cfg, err := config.LoadConfig("config.yml")
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("Ошибка загрузки конфига: %s", err))
 	}
 
 	mydbStorage := bootstrap.GetMydbStorage(cfg.Hall.MaxCapacity)

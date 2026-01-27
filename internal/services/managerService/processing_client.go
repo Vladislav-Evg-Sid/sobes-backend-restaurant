@@ -8,7 +8,7 @@ func (m *ManagerService) ProcessingClient(order models.Order) error {
 		return err
 	}
 
-	err = m.ProcessingClient(order)
+	err = m.Waiter.TransferOrderToKitchen(order)
 	if err != nil {
 		return err
 	}

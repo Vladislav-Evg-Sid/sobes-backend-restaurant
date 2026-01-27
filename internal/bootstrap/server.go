@@ -8,26 +8,39 @@ import (
 )
 
 func AppRun(managerAPI *managerserviceapi.ManagerServiceAPI, pathToJSON string) {
+	fmt.Println("AppRun start")
+	fmt.Print("Reading data... ")
 	clients, orders, err := readDataFromJSON(pathToJSON)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	fmt.Println("data loaded")
 
 	allClientsInserved := true
-	lastClientIndex := 0
 	for allClientsInserved {
-		lastClientIndex, err = insertClients(managerAPI, clients, lastClientIndex)
-		if err.Error() == "The hall is full" {
-			allClientsInserved = false
-		} else if err != nil {
-			fmt.Println(err)
+		if len(clients) == 0 {
+			fmt.Println("Done")
 			return
 		}
+		fmt.Printf("Inserting clients (clients in queue: %d)... ", len(clients))
+		err = insertClients(managerAPI, clients)
+		if err != nil {
+			if err.Error() == "The hall is full" {
+				allClientsInserved = false
+			} else {
+				fmt.Println(err)
+				return
+			}
+		}
+		fmt.Println("clients inserted")
 
+		fmt.Println("Processing clients...")
 		for len(clients) > 0 {
+			fmt.Printf("Clients in queue: %d. ", len(clients))
 			err = processingOrders(managerAPI, clients[0], orders)
-			if err != nil {
+			fmt.Println("Clients processed")
+			if err != nil { // TODO: Добавить проверки ошибок (например, если нет ингридиентов, то не падать)
 				fmt.Println(err)
 				return
 			}
@@ -36,8 +49,8 @@ func AppRun(managerAPI *managerserviceapi.ManagerServiceAPI, pathToJSON string) 
 	}
 }
 
-func insertClients(managerAPI *managerserviceapi.ManagerServiceAPI, clients []models.Client, currentClientIndex int) (int, error) {
-	return managerAPI.SetClients(clients[currentClientIndex:])
+func insertClients(managerAPI *managerserviceapi.ManagerServiceAPI, clients []models.Client) error {
+	return managerAPI.SetClients(clients)
 }
 
 func processingOrders(managerAPI *managerserviceapi.ManagerServiceAPI, client models.Client, orders []models.Order) error {
