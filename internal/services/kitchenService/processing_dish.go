@@ -6,7 +6,7 @@ import (
 	"github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 )
 
-func (k *KitchenService) ProcessingDish(dish models.DishData) error { // TODO: Добавить автопоплнение ингридиентов
+func (k *KitchenService) ProcessingDish(dish models.DishData) error {
 	k.autoAddingIngredients()
 	availableIngredients := k.Storage.GetIngredients()
 	for ingName, ingCount := range dish.Ingredients {
