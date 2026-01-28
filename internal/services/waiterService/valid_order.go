@@ -18,7 +18,7 @@ func (w *WaiterService) ValidateOrder(currentOrder models.Order) error {
 			return err
 		}
 		if dish.AgeCategory == agecategories.More18 {
-			return fmt.Errorf("Not enough ingredients")
+			return fmt.Errorf("Invalid age category")
 		}
 	}
 	return nil

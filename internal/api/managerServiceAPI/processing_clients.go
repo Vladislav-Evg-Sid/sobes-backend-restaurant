@@ -8,7 +8,6 @@ import (
 
 func (m *ManagerServiceAPI) ProcessingClients(client models.Client, orders []models.Order) error {
 	for _, ord := range orders {
-		fmt.Println("process client's dish")
 		if ord.Client.Id == client.Id {
 			return m.Service.ProcessingClient(ord)
 		}

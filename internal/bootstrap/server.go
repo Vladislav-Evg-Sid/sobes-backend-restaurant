@@ -8,48 +8,59 @@ import (
 )
 
 func AppRun(managerAPI *managerserviceapi.ManagerServiceAPI, pathToJSON string) {
-	fmt.Println("AppRun start")
-	fmt.Print("Reading data... ")
+	fmt.Println("logs: AppRun start")
+	fmt.Print("logs: Reading data... ")
 	clients, orders, err := readDataFromJSON(pathToJSON)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Printf("\nError: %s\n", err)
 		return
 	}
 	fmt.Println("data loaded")
 
-	allClientsInserved := true
-	for allClientsInserved {
+	allClientsInserved := false
+	for !allClientsInserved {
+		allClientsInserved = true
 		if len(clients) == 0 {
-			fmt.Println("Done")
+			fmt.Println("logs: Done")
 			return
 		}
-		fmt.Printf("Inserting clients (clients in queue: %d)... ", len(clients))
-		err = insertClients(managerAPI, clients)
+		fmt.Printf("logs: Inserting clients (clients in queue: %d)... ", len(clients))
+		insertedCount, err := insertClients(managerAPI, clients)
+		clientCountToStopProcessing := 0
 		if err != nil {
 			if err.Error() == "The hall is full" {
 				allClientsInserved = false
+				fmt.Printf("\nlogs: The hall is full. Inserted clients: %d. Total clients: %d\n", insertedCount, len(clients))
+				clientCountToStopProcessing = len(clients) - insertedCount
 			} else {
-				fmt.Println(err)
+				fmt.Printf("\nError: %s\n", err)
 				return
 			}
+		} else {
+			fmt.Println("clients inserted")
 		}
-		fmt.Println("clients inserted")
 
-		fmt.Println("Processing clients...")
-		for len(clients) > 0 {
-			fmt.Printf("Clients in queue: %d. ", len(clients))
+		fmt.Println("logs: Processing clients...")
+		for len(clients) > clientCountToStopProcessing {
+			fmt.Printf("logs: Clients in queue: %d... ", len(clients))
 			err = processingOrders(managerAPI, clients[0], orders)
-			fmt.Println("Clients processed")
-			if err != nil { // TODO: Добавить проверки ошибок (например, если нет ингридиентов, то не падать)
-				fmt.Println(err)
-				return
+			fmt.Println("Client processed")
+			if err != nil {
+				if err.Error() == "Not enough ingredients" {
+					fmt.Println("logs: Not enough ingredients")
+				} else if err.Error() == "Invalid age category" {
+					fmt.Println("logs: Invalid age category")
+				} else {
+					fmt.Printf("Error: %s\n", err)
+					return
+				}
 			}
 			clients = clients[1:]
 		}
 	}
 }
 
-func insertClients(managerAPI *managerserviceapi.ManagerServiceAPI, clients []models.Client) error {
+func insertClients(managerAPI *managerserviceapi.ManagerServiceAPI, clients []models.Client) (int, error) {
 	return managerAPI.SetClients(clients)
 }
 

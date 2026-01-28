@@ -13,9 +13,5 @@ func (m *ManagerService) SetClient(newClient models.Client) error {
 		return fmt.Errorf("The hall is full")
 	}
 
-	err := m.Waiter.SetClientAge(newClient.Age)
-	if err != nil {
-		return err
-	}
 	return m.Storage.SetNewClient(newClient)
 }
