@@ -23,7 +23,7 @@ func (k *KitchenService) GetTop5PopularDishes() [5]models.DishCount {
 	})
 
 	var result [5]models.DishCount
-	for i := 0; i < 5; i++ {
+	for i := 0; i < min(5, len(topDishCount)); i++ {
 		result[i] = topDishCount[i]
 	}
 

@@ -1,10 +1,15 @@
 package mydb
 
+type statistic struct {
+	writedOffIngredients ingridient
+}
+
 type DataBase struct {
 	MaxHallCapacity int
 	Ingredients     ingridient
 	Dishes          dish
 	Clients         client
+	statistic       statistic
 }
 
 func getIngredientsStruct() ingridient {
