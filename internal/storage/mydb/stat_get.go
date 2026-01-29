@@ -10,12 +10,12 @@ func (db *DataBase) GetCurrentIngredientsCount() models.Ingredients {
 	return models.Ingredients(db.Ingredients)
 }
 
-func (db *DataBase) GetTop5IngredientsMinCount() [5]models.IngredientCount {
-	topIngredientsCount := make([]models.IngredientCount, 0, len(db.Ingredients))
+func (db *DataBase) GetTop5IngredientsMinCount() [5]models.ProductCount {
+	topIngredientsCount := make([]models.ProductCount, 0, len(db.Ingredients))
 	for key, value := range db.Ingredients {
 		topIngredientsCount = append(
 			topIngredientsCount,
-			models.IngredientCount{
+			models.ProductCount{
 				Name:  key,
 				Count: value,
 			},
@@ -26,7 +26,7 @@ func (db *DataBase) GetTop5IngredientsMinCount() [5]models.IngredientCount {
 		return topIngredientsCount[i].Count > topIngredientsCount[j].Count
 	})
 
-	var result [5]models.IngredientCount
+	var result [5]models.ProductCount
 	for i := 0; i < min(5, len(topIngredientsCount)); i++ {
 		result[i] = topIngredientsCount[i]
 	}
@@ -34,12 +34,12 @@ func (db *DataBase) GetTop5IngredientsMinCount() [5]models.IngredientCount {
 	return result
 }
 
-func (db *DataBase) GetTop5IngredientsMaxCount() [5]models.IngredientCount {
-	topIngredientsCount := make([]models.IngredientCount, 0, len(db.Ingredients))
+func (db *DataBase) GetTop5IngredientsMaxCount() [5]models.ProductCount {
+	topIngredientsCount := make([]models.ProductCount, 0, len(db.Ingredients))
 	for key, value := range db.Ingredients {
 		topIngredientsCount = append(
 			topIngredientsCount,
-			models.IngredientCount{
+			models.ProductCount{
 				Name:  key,
 				Count: value,
 			},
@@ -50,7 +50,7 @@ func (db *DataBase) GetTop5IngredientsMaxCount() [5]models.IngredientCount {
 		return topIngredientsCount[i].Count < topIngredientsCount[j].Count
 	})
 
-	var result [5]models.IngredientCount
+	var result [5]models.ProductCount
 	for i := 0; i < min(5, len(topIngredientsCount)); i++ {
 		result[i] = topIngredientsCount[i]
 	}

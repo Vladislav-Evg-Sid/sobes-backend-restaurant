@@ -18,14 +18,14 @@ type waiterService interface {
 type kitchenService interface {
 	GetCountSuccessProcessedOrders() int
 	GetCountRefusedOrdersWithoutIngredients() int
-	GetTop5PopularDishes() [5]models.DishCount
+	GetTop5PopularDishes() [5]models.ProductCount
 	GetCountWriteOffIngredients() int
 }
 
 type storageService interface {
 	GetCurrentIngredientsCount() models.Ingredients
-	GetTop5IngredientsMinCount() [5]models.IngredientCount
-	GetTop5IngredientsMaxCount() [5]models.IngredientCount
+	GetTop5IngredientsMinCount() [5]models.ProductCount
+	GetTop5IngredientsMaxCount() [5]models.ProductCount
 	GetCountWriteOffIngredients() models.Ingredients
 	GetCountAllIngredients() int
 }

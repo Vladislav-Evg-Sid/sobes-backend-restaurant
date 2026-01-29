@@ -6,12 +6,12 @@ import (
 	"github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 )
 
-func (k *KitchenService) GetTop5PopularDishes() [5]models.DishCount {
-	topDishCount := make([]models.DishCount, 0, len(k.statistic.topProcessingDishes))
+func (k *KitchenService) GetTop5PopularDishes() [5]models.ProductCount {
+	topDishCount := make([]models.ProductCount, 0, len(k.statistic.topProcessingDishes))
 	for key, value := range k.statistic.topProcessingDishes {
 		topDishCount = append(
 			topDishCount,
-			models.DishCount{
+			models.ProductCount{
 				Name:  key,
 				Count: value,
 			},
@@ -22,7 +22,7 @@ func (k *KitchenService) GetTop5PopularDishes() [5]models.DishCount {
 		return topDishCount[i].Count < topDishCount[j].Count
 	})
 
-	var result [5]models.DishCount
+	var result [5]models.ProductCount
 	for i := 0; i < min(5, len(topDishCount)); i++ {
 		result[i] = topDishCount[i]
 	}

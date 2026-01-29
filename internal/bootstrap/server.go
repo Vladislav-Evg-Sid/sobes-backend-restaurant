@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"fmt"
+	"math"
 
 	adminserviceapi "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/api/AdminServiceAPI"
 	managerserviceapi "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/api/managerServiceAPI"
@@ -14,7 +15,46 @@ func AppRun(managerAPI *managerserviceapi.ManagerServiceAPI, adminAPI *adminserv
 }
 
 func adminProcessing(adminAPI *adminserviceapi.AdminServiceAPI) {
+	fmt.Println("\nРабочий день закончился, админ смотрит результаты:")
+	fmt.Println("\tАнализ по манагеру:")
+	fmt.Printf("\t\tКоличество обслуженных клиентов: %d\n", adminAPI.ManagerService.GetCountServedClients())
+	fmt.Printf("\t\tМаксимальная нагрузка на зал: %f%%\n", math.Round(float64(100*adminAPI.ManagerService.GetMaxHallLoad())))
+	fmt.Printf("\t\tКоличество отказов по причине переполненности: %d\n", adminAPI.ManagerService.GetCountRefusedDueOverflowHall())
 
+	fmt.Println("\tАнализ по официанту:")
+	fmt.Printf("\t\tОбщее количество обслуженных заказов: %d\n", adminAPI.WaiterService.GetCountServedOrders())
+	fmt.Printf("\t\tКоличество отклонённых заказов: %d\n", adminAPI.WaiterService.GetCountRefusedOrders())
+	fmt.Printf("\t\tКоличество заказов с 18+ блюдами: %d\n", adminAPI.WaiterService.GetCountMore18Dishes())
+	fmt.Printf("\t\tСреднее количество блюд в заказе: %f\n", math.Round(float64(100*adminAPI.WaiterService.GetMeanCountDishesInOrder()))/100)
+
+	fmt.Println("\tАнализ по кухне:")
+	fmt.Printf("\t\tКоличество успешно приготовленных заказов: %d\n", adminAPI.KitchenService.GetCountSuccessProcessedOrders())
+	fmt.Printf("\t\tКоличество отказов из-за отсутствия ингредиентов: %d\n", adminAPI.KitchenService.GetCountRefusedOrdersWithoutIngredients())
+	fmt.Printf("\t\tСамые часто готовимые блюда: %s\n", arr2str(adminAPI.KitchenService.GetTop5PopularDishes()))
+	fmt.Printf("\t\tОбщее количество списанных ингредиентов: %d\n", adminAPI.KitchenService.GetCountWriteOffIngredients())
+
+	fmt.Println("\tАнализ по складу:")
+	fmt.Printf("\tТекущие остатки ингредиентов: %s\n", modelsIngredients2strList(adminAPI.StorageService.GetCurrentIngredientsCount()))
+	fmt.Printf("\tИнгредиенты с минимальным запасом: %s\n", arr2str(adminAPI.StorageService.GetTop5IngredientsMinCount()))
+	fmt.Printf("\tИнгредиенты с максимальным запасом: %s\n", arr2str(adminAPI.StorageService.GetTop5IngredientsMaxCount()))
+	fmt.Printf("\tКоличество списаний: %s\n", modelsIngredients2strList(adminAPI.StorageService.GetCountWriteOffIngredients()))
+	fmt.Printf("\tОбщее количество всех ингредиентов: %d\n", adminAPI.StorageService.GetCountAllIngredients())
+}
+
+func modelsIngredients2strList(ing models.Ingredients) string {
+	ingStr := ""
+	for name, count := range ing {
+		ingStr += fmt.Sprintf("\n\t\t\t%s: %d", name, count)
+	}
+	return ingStr
+}
+
+func arr2str(productList [5]models.ProductCount) string {
+	productsStr := ""
+	for _, dish := range productList {
+		productsStr += fmt.Sprintf("%s (%d); ", dish.Name, dish.Count)
+	}
+	return productsStr
 }
 
 func restaurantProcessing(managerAPI *managerserviceapi.ManagerServiceAPI, pathToJSON string) {
