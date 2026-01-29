@@ -15,10 +15,18 @@ type kitchenService interface {
 	ProcessingDish(dish models.DishData, dishCount int) error
 }
 
+type statistic struct {
+	countServedOrders  int
+	countRefusedOrders int
+	countMore18Dishes  int
+	countServedDishes  int
+}
+
 type WaiterService struct {
 	Storage   waiterStorage
 	Kitchen   kitchenService
 	ClientAge int
+	statistic statistic
 }
 
 func NewWaiterService(storage waiterStorage, kitchen kitchenService) *WaiterService {

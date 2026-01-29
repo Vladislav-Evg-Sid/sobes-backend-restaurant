@@ -12,12 +12,14 @@ func (w *WaiterService) ValidateOrder(currentOrder models.Order) error {
 		return fmt.Errorf("No client")
 	}
 
-	if w.ClientAge < 18 {
-		dish, err := w.Kitchen.GetDishByName(currentOrder.Dish)
-		if err != nil {
-			return err
-		}
-		if dish.AgeCategory == agecategories.More18 {
+	dish, err := w.Kitchen.GetDishByName(currentOrder.Dish)
+	if err != nil {
+		return err
+	}
+	if dish.AgeCategory == agecategories.More18 {
+		w.statistic.countMore18Dishes++
+		if w.ClientAge < 18 {
+			w.statistic.countRefusedOrders++
 			return fmt.Errorf("Invalid age category")
 		}
 	}

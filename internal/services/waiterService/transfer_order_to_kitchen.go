@@ -23,5 +23,9 @@ func (w *WaiterService) TransferOrderToKitchen(currentOrder models.Order) error 
 		return err
 	}
 	w.ClientAge = -1
+
+	w.statistic.countServedOrders++
+	w.statistic.countServedDishes += currentOrder.Count
+
 	return nil
 }

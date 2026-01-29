@@ -9,9 +9,9 @@ type managerService interface {
 }
 
 type waiterService interface {
-	GetCountServedClients() int
+	GetCountServedOrders() int
 	GetCountRefusedOrders() int
-	GetCountMore18Dish() int
+	GetCountMore18Dishes() int
 	GetMeanCountDishesInOrder() float32
 }
 
