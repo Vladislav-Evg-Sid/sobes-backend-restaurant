@@ -9,10 +9,18 @@ type kitchenStorage interface {
 	GetIngredients() models.Ingredients
 }
 
+type statistic struct {
+	countSuccessProcessedOrders          int
+	countRefusedOrdersWithoutIngredients int
+	topProcessingDishes                  map[string]int
+	countWriteOffIngredients             int
+}
+
 type KitchenService struct {
 	Storage                kitchenStorage
 	DishCountToSetProducts int
 	CurrentDishCount       int
+	statistic              statistic
 }
 
 func NewKitchenService(storage kitchenStorage, dishCountToSetProduct int) *KitchenService {

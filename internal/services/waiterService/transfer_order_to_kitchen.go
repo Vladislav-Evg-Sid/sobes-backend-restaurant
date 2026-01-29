@@ -15,7 +15,7 @@ func (w *WaiterService) TransferOrderToKitchen(currentOrder models.Order) error 
 	if err != nil {
 		return err
 	}
-	err = w.Kitchen.ProcessingDish(dish, currentOrder.Count)
+	err = w.Kitchen.ProcessingDish(dish, currentOrder.Dish, currentOrder.Count)
 	if err != nil {
 		if err.Error() == "Not enough ingredients" {
 			w.ClientAge = -1
