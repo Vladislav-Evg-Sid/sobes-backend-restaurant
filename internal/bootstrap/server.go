@@ -3,12 +3,18 @@ package bootstrap
 import (
 	"fmt"
 
+	adminserviceapi "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/api/AdminServiceAPI"
 	managerserviceapi "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/api/managerServiceAPI"
 	"github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 )
 
-func AppRun(managerAPI *managerserviceapi.ManagerServiceAPI, pathToJSON string) {
+func AppRun(managerAPI *managerserviceapi.ManagerServiceAPI, adminAPI *adminserviceapi.AdminServiceAPI, pathToJSON string) {
 	restaurantProcessing(managerAPI, pathToJSON)
+	adminProcessing(adminAPI)
+}
+
+func adminProcessing(adminAPI *adminserviceapi.AdminServiceAPI) {
+
 }
 
 func restaurantProcessing(managerAPI *managerserviceapi.ManagerServiceAPI, pathToJSON string) {

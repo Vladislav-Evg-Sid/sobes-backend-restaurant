@@ -15,9 +15,10 @@ func main() {
 
 	mydbStorage := bootstrap.GetMydbStorage(cfg.Hall.MaxCapacity)
 	kitchenService := bootstrap.GetKitchenService(mydbStorage, cfg.Kitchen.DishCountToSetProduct)
-	waiterWervice := bootstrap.GetWaiterService(mydbStorage, kitchenService)
-	managerService := bootstrap.GetManagerService(mydbStorage, waiterWervice)
+	waiterService := bootstrap.GetWaiterService(mydbStorage, kitchenService)
+	managerService := bootstrap.GetManagerService(mydbStorage, waiterService)
 	managerAPI := bootstrap.GetManagerAPI(managerService)
+	adminAPI := bootstrap.GetAdminAPI(managerService, waiterService, kitchenService, mydbStorage)
 
-	bootstrap.AppRun(managerAPI, cfg.App.PathToJSON)
+	bootstrap.AppRun(managerAPI, adminAPI, cfg.App.PathToJSON)
 }
