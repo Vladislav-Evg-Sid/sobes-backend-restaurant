@@ -37,6 +37,7 @@ func GetDataBase(maxCapacity int) *DataBase {
 			Ingredients:     getIngredientsStruct(),
 			Dishes:          getDishesStruct(),
 			Clients:         getClientsStruct(),
+			statistic:       statistic{writedOffIngredients: make(ingridient)},
 		}
 		instance.SetNewProducts()
 	}

@@ -11,6 +11,7 @@ func (m *ManagerService) ProcessingClient(order models.Order) error {
 	if err != nil {
 		return err
 	}
+	m.statistic.countServedClients++
 
 	err = m.Waiter.ValidateOrder(order)
 	if err != nil {
@@ -27,8 +28,6 @@ func (m *ManagerService) ProcessingClient(order models.Order) error {
 		}
 		return err
 	}
-
-	m.statistic.countServedClients++
 
 	return m.DeleteClient(order.Client.Id)
 }

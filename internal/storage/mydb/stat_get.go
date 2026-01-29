@@ -23,7 +23,7 @@ func (db *DataBase) GetTop5IngredientsMinCount() [5]models.ProductCount {
 	}
 
 	sort.Slice(topIngredientsCount, func(i, j int) bool {
-		return topIngredientsCount[i].Count > topIngredientsCount[j].Count
+		return topIngredientsCount[i].Count < topIngredientsCount[j].Count
 	})
 
 	var result [5]models.ProductCount
@@ -47,7 +47,7 @@ func (db *DataBase) GetTop5IngredientsMaxCount() [5]models.ProductCount {
 	}
 
 	sort.Slice(topIngredientsCount, func(i, j int) bool {
-		return topIngredientsCount[i].Count < topIngredientsCount[j].Count
+		return topIngredientsCount[i].Count > topIngredientsCount[j].Count
 	})
 
 	var result [5]models.ProductCount

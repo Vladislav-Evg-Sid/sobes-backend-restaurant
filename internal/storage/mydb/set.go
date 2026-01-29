@@ -18,6 +18,7 @@ func (db *DataBase) WriteOffProducts(ingredientsToWriteOff models.Ingredients, d
 	for keyDel, valueDel := range ingredientsToWriteOff {
 		for keyCurrent := range db.Ingredients {
 			if keyCurrent == keyDel {
+				db.statistic.writedOffIngredients[keyCurrent] += valueDel * dishCount
 				db.Ingredients[keyCurrent] -= valueDel * dishCount
 			}
 		}

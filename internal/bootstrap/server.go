@@ -34,11 +34,11 @@ func adminProcessing(adminAPI *adminserviceapi.AdminServiceAPI) {
 	fmt.Printf("\t\tОбщее количество списанных ингредиентов: %d\n", adminAPI.KitchenService.GetCountWriteOffIngredients())
 
 	fmt.Println("\tАнализ по складу:")
-	fmt.Printf("\tТекущие остатки ингредиентов: %s\n", modelsIngredients2strList(adminAPI.StorageService.GetCurrentIngredientsCount()))
-	fmt.Printf("\tИнгредиенты с минимальным запасом: %s\n", arr2str(adminAPI.StorageService.GetTop5IngredientsMinCount()))
-	fmt.Printf("\tИнгредиенты с максимальным запасом: %s\n", arr2str(adminAPI.StorageService.GetTop5IngredientsMaxCount()))
-	fmt.Printf("\tКоличество списаний: %s\n", modelsIngredients2strList(adminAPI.StorageService.GetCountWriteOffIngredients()))
-	fmt.Printf("\tОбщее количество всех ингредиентов: %d\n", adminAPI.StorageService.GetCountAllIngredients())
+	fmt.Printf("\t\tТекущие остатки ингредиентов: %s\n", modelsIngredients2strList(adminAPI.StorageService.GetCurrentIngredientsCount()))
+	fmt.Printf("\t\tИнгредиенты с минимальным запасом: %s\n", arr2str(adminAPI.StorageService.GetTop5IngredientsMinCount()))
+	fmt.Printf("\t\tИнгредиенты с максимальным запасом: %s\n", arr2str(adminAPI.StorageService.GetTop5IngredientsMaxCount()))
+	fmt.Printf("\t\tКоличество списаний: %s\n", modelsIngredients2strList(adminAPI.StorageService.GetCountWriteOffIngredients()))
+	fmt.Printf("\t\tОбщее количество всех ингредиентов: %d\n", adminAPI.StorageService.GetCountAllIngredients())
 }
 
 func modelsIngredients2strList(ing models.Ingredients) string {

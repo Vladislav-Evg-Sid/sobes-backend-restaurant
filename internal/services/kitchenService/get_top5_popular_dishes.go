@@ -19,7 +19,7 @@ func (k *KitchenService) GetTop5PopularDishes() [5]models.ProductCount {
 	}
 
 	sort.Slice(topDishCount, func(i, j int) bool {
-		return topDishCount[i].Count < topDishCount[j].Count
+		return topDishCount[i].Count > topDishCount[j].Count
 	})
 
 	var result [5]models.ProductCount
