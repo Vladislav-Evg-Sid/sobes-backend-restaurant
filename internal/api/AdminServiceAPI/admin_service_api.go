@@ -19,7 +19,7 @@ type kitchenService interface {
 	GetCountSuccessProcessedOrders() int
 	GetCountRefusedOrdersWithoutIngredients() int
 	GetTop5PopularDishes() [5]models.DishCount
-	GetCountWriteOffIngredients() models.Ingredients
+	GetCountWriteOffIngredients() int
 }
 
 type storageService interface {
