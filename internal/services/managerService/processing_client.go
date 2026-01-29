@@ -28,5 +28,7 @@ func (m *ManagerService) ProcessingClient(order models.Order) error {
 		return err
 	}
 
+	m.statistic.countServedClients++
+
 	return m.DeleteClient(order.Client.Id)
 }

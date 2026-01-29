@@ -5,7 +5,7 @@ import "github.com/Vladislav-Evg-Sid/sobes-backend-restaurant/internal/models"
 type managerService interface {
 	GetCountServedClients() int
 	GetMaxHallLoad() float32
-	GetRefusedDueOverflowHall() int
+	GetCountRefusedDueOverflowHall() int
 }
 
 type waiterService interface {

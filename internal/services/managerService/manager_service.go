@@ -16,9 +16,16 @@ type waiterService interface {
 	DeleteClientAge() error
 }
 
+type statistic struct {
+	countServedClients          int
+	maxHallLoad                 float32
+	countRefusedDueOverflowHall int
+}
+
 type ManagerService struct {
-	Storage managerStorage
-	Waiter  waiterService
+	Storage   managerStorage
+	Waiter    waiterService
+	statistic statistic
 }
 
 func NewManagerService(storage managerStorage, waiter waiterService) *ManagerService {
