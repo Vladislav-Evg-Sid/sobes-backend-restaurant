@@ -8,6 +8,10 @@ import (
 )
 
 func AppRun(managerAPI *managerserviceapi.ManagerServiceAPI, pathToJSON string) {
+	restaurantProcessing(managerAPI, pathToJSON)
+}
+
+func restaurantProcessing(managerAPI *managerserviceapi.ManagerServiceAPI, pathToJSON string) {
 	fmt.Println("logs: AppRun start")
 	fmt.Print("logs: Reading data... ")
 	clients, orders, err := readDataFromJSON(pathToJSON)
