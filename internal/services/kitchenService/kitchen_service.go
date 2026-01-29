@@ -28,5 +28,6 @@ func NewKitchenService(storage kitchenStorage, dishCountToSetProduct int) *Kitch
 		Storage:                storage,
 		DishCountToSetProducts: dishCountToSetProduct,
 		CurrentDishCount:       0,
+		statistic:              statistic{topProcessingDishes: make(map[string]int)},
 	}
 }
